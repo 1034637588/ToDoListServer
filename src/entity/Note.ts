@@ -1,11 +1,10 @@
 import * as Types from '../typeings';
-export class Note implements Types.Note{
-    id: string;
-    content: string;
-    dates: string;
-    constructor(id:string, content:string, dates:string) {
-        this.id = id;
-        this.content = content;
-        this.dates = dates;
-    }
-}
+import { Schema, Model, model } from 'mongoose';
+
+const noteModel:Schema = new Schema({
+    id:String,
+    content:String,
+    dates:String
+});
+
+export const NoteModel : Model<Types.Note> = model( 'note',noteModel)

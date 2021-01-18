@@ -1,8 +1,9 @@
-import { Todo } from '../entity/Todo'
+import { ToDoModel } from '../entity/Todo'
 import * as Types from '../typeings'
 export class todoDao implements Types.todoDao {
+    todoModel = ToDoModel;
     getTodoList(page:number,size:number){
-        return [ new Todo('','',true)]
+        return [ ]
     };
     addTodo(todo:Types.Todo){
         return ''

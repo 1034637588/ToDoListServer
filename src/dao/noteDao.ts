@@ -1,13 +1,20 @@
-import { Note } from '../entity/Note'
-import * as Types from '../typeings'
+import { NoteModel } from '../entity/Note';
+import * as Types from '../typeings';
+import mongoose, { Model } from 'mongoose';
+const Schema = mongoose.Schema;
+
 export class noteDao implements Types.noteDao{
-    getNoteList(page: number, size: number) {
-        return [new Note('','','')]
+    noteModel=NoteModel
+    async getNoteList(page: number, size: number) {
+        await this.noteModel.find((err,res)=>{
+            console.log(res,666)
+            return res
+        })
     }
     addNote(note: Types.Note) {
     }
     deleteNote(id: string) {
     }
-    updateNote(id: string, note: Note) {
+    updateNote(id: string, note: Types.Note) {
     }
 }

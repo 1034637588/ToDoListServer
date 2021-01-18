@@ -1,11 +1,10 @@
 import * as Types from '../typeings';
-export class Todo implements Types.Todo{
-    id: string;
-    content: string;
-    isDone: boolean;
-    constructor(id:string, content:string, isDone:boolean) {
-        this.id = id;
-        this.content = content;
-        this.isDone = isDone;
-    }
-}
+import { Schema, Model, model } from 'mongoose';
+
+const todoModel:Schema = new Schema({
+    id:String,
+    content:String,
+    isdone:String
+});
+
+export const ToDoModel : Model<Types.Todo> = model( 'note',todoModel)

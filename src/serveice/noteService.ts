@@ -1,17 +1,17 @@
 import * as Types from "../typeings";
 import { noteDao } from "../dao/noteDao";
-import { Note } from "../entity/Note";
 
 class noteServeice implements Types.noteServeice {
     noteDao = new noteDao();
     getNoteList(page: number, size: number) {
-        return [new Note('','','')]
+        this.noteDao.getNoteList(1,2);
+        return []
     }
-    addNote(note: Note) {
+    addNote(note: Types.Note) {
     }
     deleteNote(id: string) {
     }
-    updateNote(id: string, note: Note) {
+    updateNote(id: string, note: Types.Note) {
     }
 
 }
