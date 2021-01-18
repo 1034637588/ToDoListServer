@@ -18,6 +18,7 @@ export interface Result<T>{
 }
 
 export interface noteServeice {
+    noteDao:noteDao;
     getNoteList(page:number,size:number):Note[];
     addNote(note:Note):any;
     deleteNote(id:string):any;
@@ -25,6 +26,7 @@ export interface noteServeice {
 }
 
 export interface todoServeice {
+    todoDao:todoDao;
     getTodoList(page:number,size:number):Todo[];
     addTodo(todo:Todo):any;
     deleteTodo(id:string):any;

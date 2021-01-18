@@ -1,7 +1,8 @@
-import { Result } from "../entity/Result";
+import { todoDao } from "../dao/todoDao";
 import { Todo } from "../entity/todo";
 import * as Types from "../typeings";
 export class toDoService implements Types.todoServeice{
+    todoDao = new todoDao();
     getTodoList(page:number,size:number){
         return [ new Todo('','',true)]
     };
