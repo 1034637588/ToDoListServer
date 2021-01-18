@@ -18,18 +18,33 @@ export interface Result<T>{
 }
 
 export interface noteServeice {
-    getNoteList(page:number,size:number):Result<Note>;
-    addNote(note:Note):Result<any>;
-    deleteNote(id:string):Result<any>;
-    updateNote(id:string,note:Note):Result<any>;
+    getNoteList(page:number,size:number):Note[];
+    addNote(note:Note):any;
+    deleteNote(id:string):any;
+    updateNote(id:string,note:Note):any;
 }
 
 export interface todoServeice {
-    getTodoList(page:number,size:number):Result<Todo>;
-    addTodo(todo:Todo):Result<any>;
-    deleteTodo(id:string):Result<any>;
-    updateTodo(id:string,todo:Todo):Result<any>;
-    updateIsDone(id:string,isDone:boolean):Result<any>
+    getTodoList(page:number,size:number):Todo[];
+    addTodo(todo:Todo):any;
+    deleteTodo(id:string):any;
+    updateTodo(id:string,todo:Todo):any;
+    updateIsDone(id:string,isDone:boolean):any
+}
+
+export interface noteDao {
+    getNoteList(page:number,size:number):Note[];
+    addNote(note:Note):any;
+    deleteNote(id:string):any;
+    updateNote(id:string,note:Note):any;
+}
+
+export interface todoDao {
+    getTodoList(page:number,size:number):Todo[];
+    addTodo(todo:Todo):any;
+    deleteTodo(id:string):any;
+    updateTodo(id:string,todo:Todo):any;
+    updateIsDone(id:string,isDone:boolean):any
 }
 
 
