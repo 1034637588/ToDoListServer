@@ -1,4 +1,4 @@
-import { Todo } from '../entity/todo'
+import { Todo } from '../entity/Todo'
 import * as Types from '../typeings'
 export class todoDao implements Types.todoDao {
     getTodoList(page:number,size:number){

@@ -1,6 +1,6 @@
-import { Note } from "../entity/note";
 import * as Types from "../typeings";
 import { noteDao } from "../dao/noteDao";
+import { Note } from "../entity/Note";
 
 class noteServeice implements Types.noteServeice {
     noteDao = new noteDao();

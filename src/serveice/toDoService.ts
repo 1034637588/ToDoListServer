@@ -1,5 +1,5 @@
 import { todoDao } from "../dao/todoDao";
-import { Todo } from "../entity/todo";
+import { Todo } from "../entity/Todo";
 import * as Types from "../typeings";
 export class toDoService implements Types.todoServeice{
     todoDao = new todoDao();
