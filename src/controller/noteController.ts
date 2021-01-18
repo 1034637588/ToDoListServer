@@ -1,5 +1,5 @@
 import Router from 'koa-router'
-import noteServeice from '../serveice/noteservice';
+import noteServeice from '../serveice/noteService';
 let noteRouter = new Router();
 const serveice = new noteServeice();
 // 获取分页数据
