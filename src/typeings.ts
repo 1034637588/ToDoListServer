@@ -2,13 +2,13 @@
 
 import { Schema, Model, model, Document } from 'mongoose';
 export interface Note extends Document {
-    id: string;
+    _id: string;
     content: string;
     dates: string;
 }
 
 export interface Todo extends Document{
-    id: string;
+    _id: string;
     isdone: boolean;
     content: string;
 }
@@ -29,7 +29,7 @@ export interface noteServeice {
 
 export interface todoServeice {
     todoDao: todoDao;
-    getTodoList(page: number, size: number): Todo[];
+    getTodoList(page: number, size: number): Promise<Todo[]>;
     addTodo(todo: Todo): any;
     deleteTodo(id: string): any;
     updateTodo(id: string, todo: Todo): any;
@@ -46,7 +46,7 @@ export interface noteDao {
 
 export interface todoDao {
     todoModel: Model<Todo>;
-    getTodoList(page: number, size: number): Todo[];
+    getTodoList(page: number, size: number): Promise<Todo[]>;
     addTodo(todo: Todo): any;
     deleteTodo(id: string): any;
     updateTodo(id: string, todo: Todo): any;
