@@ -6,4 +6,4 @@ const todoModel:Schema = new Schema({
     isdone:Boolean
 });
 
-export const ToDoModel : Model<Types.Todo> = model( 'note',todoModel)
+export const ToDoModel : Model<Types.Todo> = model( 'todolists',todoModel)
