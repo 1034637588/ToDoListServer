@@ -2,6 +2,18 @@ import { ToDoModel } from '../entity/Todo'
 import * as Types from '../typeings'
 export class todoDao implements Types.todoDao {
     todoModel = ToDoModel;
+    
+    // 条件查询
+    async getTodoListByContent(content: string) {
+        try {
+            const data: Array<Types.Todo> = await this.todoModel.find({
+                content: new RegExp(`${content}`,'g')
+            });
+            return data;
+        } catch (error) {
+            return 0;
+        }
+    }
 
     async getTodoList(page: number, size: number) {
         try {

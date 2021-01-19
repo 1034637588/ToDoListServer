@@ -5,6 +5,19 @@ const Schema = mongoose.Schema;
 
 export class noteDao implements Types.noteDao {
     noteModel = NoteModel
+
+    // 条件查询
+    async getNoteListByContent(content: string) {
+        try {
+            const data: Array<Types.Note> = await this.noteModel.find({
+                content: new RegExp(`${content}`,'g')
+            });
+            return data;
+        } catch (error) {
+            return 0;
+        }
+    }
+
     // 分页查询
     async getNoteList(page: number, size: number) {
         try {

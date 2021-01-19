@@ -4,14 +4,20 @@ import { noteDao } from "../dao/noteDao";
 class noteServeice implements Types.noteServeice {
     noteDao = new noteDao();
 
+    // 条件查询
+    async getNoteListByContent(content: string) {
+        const data = await this.noteDao.getNoteListByContent(content);
+        return data;
+    }
+
     async getNoteList(page: number, size: number) {
-      const data = await this.noteDao.getNoteList(page,size);
-      return data;
+        const data = await this.noteDao.getNoteList(page, size);
+        return data;
     }
 
     async addNote(note: Types.Note) {
-       const data = await this.noteDao.addNote(note);
-       return data;
+        const data = await this.noteDao.addNote(note);
+        return data;
     }
 
     async deleteNote(id: string) {
@@ -20,8 +26,8 @@ class noteServeice implements Types.noteServeice {
     }
 
     async updateNote(id: string, note: Types.Note) {
-      let data = await this.noteDao.updateNote(id,note);
-      return data;
+        let data = await this.noteDao.updateNote(id, note);
+        return data;
     }
 
 }

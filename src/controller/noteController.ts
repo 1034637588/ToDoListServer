@@ -4,6 +4,18 @@ import * as Types from '../typeings'
 import noteServeice from '../serveice/noteService';
 let noteRouter = new Router();
 const serveice = new noteServeice();
+
+// 条件查询
+noteRouter.get('/note/:content',async (ctx) => {
+    const {content} = ctx.params;
+    const data = await serveice.getNoteListByContent(content);
+    if(data) {
+        ctx.body = new Result<Types.Note[]>(20000, data, 'success');
+    } else {
+        ctx.body = new Result<null>(20001, null, 'error');
+    }
+});
+
 // 获取分页数据
 noteRouter.get('/note/:page/:size', async (ctx) => {
     const { page, size }= ctx.params;

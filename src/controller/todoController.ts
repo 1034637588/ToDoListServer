@@ -5,6 +5,17 @@ import { toDoService } from '../serveice/toDoService';
 let todoRouter = new Router();
 const serveice = new toDoService();
 
+// 条件查询
+todoRouter.get('/note/:content',async (ctx) => {
+    const {content} = ctx.params;
+    const data = await serveice.getTodoListByContent(content);
+    if(data) {
+        ctx.body = new Result<Types.Todo[]>(20000, data, 'success');
+    } else {
+        ctx.body = new Result<null>(20001, null, 'error');
+    }
+});
+
 // 获取分页数据
 todoRouter.get('/todo/:page/:size', async(ctx) => {
     const { page, size }= ctx.params;
