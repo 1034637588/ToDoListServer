@@ -6,8 +6,8 @@ let noteRouter = new Router();
 const serveice = new noteServeice();
 // 获取分页数据
 noteRouter.get('/note/:page/:size', async (ctx) => {
-    const { page, size } = ctx.params;
-    const date = await serveice.getNoteList(page, size);
+    const { page, size }= ctx.params;
+    const date = await serveice.getNoteList(Number(page), Number(size));
     const result = new Result<Types.Note[]>(200, date, 'success');
     ctx.body = result;
 });
