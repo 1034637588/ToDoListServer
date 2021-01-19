@@ -12,7 +12,16 @@ todoRouter.get('/todo/:page/:size', async(ctx) => {
     ctx.body = result;
 });
 // 新增todo
-todoRouter.post('/todo', (ctx) => {
+todoRouter.post('/todo', async(ctx) => {
+    const body:Types.Todo = ctx.request.body;
+    const data = await serveice.addTodo(body);
+    let result:Types.Result<Types.Todo>;
+    if(data) {
+        result = new Result<Types.Todo>(20000, data, 'success');
+    } else {
+        result = new Result<any>(20001, 'insert error', 'success');
+    }
+    ctx.body = result;
 });
 
 // 删除todo

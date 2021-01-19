@@ -6,8 +6,10 @@ export class todoDao implements Types.todoDao {
         const data:Array<Types.Todo> = await this.todoModel.find({}).skip((page - 1) * size).limit(size);
         return data;
     };
-    addTodo(todo:Types.Todo){
-        return ''
+    async addTodo(todo:Types.Todo){
+        const noteIns = new this.todoModel(todo);
+        const data = await noteIns.save();
+        return data;
     };
     deleteTodo(id:string){
         return ''

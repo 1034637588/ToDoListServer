@@ -6,8 +6,9 @@ export class toDoService implements Types.todoServeice{
         const data = await this.todoDao.getTodoList(page,size);
         return data;
     };
-    addTodo(todo:Types.Todo){
-        return ''
+    async addTodo(todo:Types.Todo){
+       const meg = await this.todoDao.addTodo(todo);
+       return meg;
     };
     deleteTodo(id:string){
         return ''
