@@ -3,8 +3,10 @@ import noteRouter from './controller/noteController';
 import todoRouter from './controller/todoController';
 import connect from './utils/dbconnect';
 import bodyParser from 'koa-bodyparser';
+import cors from './utils/cors';
 const app = new Koa();
 connect(); // 建立mongodb连接
+app.use(cors);
 app.use(bodyParser());
 app.use(noteRouter.routes());
 app.use(todoRouter.routes());
