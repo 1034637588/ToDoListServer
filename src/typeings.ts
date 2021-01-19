@@ -2,13 +2,13 @@
 
 import { Schema, Model, model, Document } from 'mongoose';
 export interface Note extends Document {
-    _id: string;
+    _id?: string;
     content: string;
     dates: string;
 }
 
 export interface Todo extends Document{
-    _id: string;
+    _id?: string;
     isdone: boolean;
     content: string;
 }

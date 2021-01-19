@@ -1,10 +1,10 @@
 import { todoDao } from "../dao/todoDao";
-import { Todo } from "../entity/Todo";
 import * as Types from "../typeings";
 export class toDoService implements Types.todoServeice{
     todoDao = new todoDao();
-    getTodoList(page:number,size:number){
-        return [ new Todo('','',true)]
+    async getTodoList(page:number,size:number){
+        const data = await this.todoDao.getTodoList(page,size);
+        return data;
     };
     addTodo(todo:Types.Todo){
         return ''

@@ -6,8 +6,9 @@ async function connect() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
+        console.log("数据库已连接....")
     } catch (error) {
-        console.log(error);
+        console.log("数据库连接失败",error);
     }    
 }
 export default connect;

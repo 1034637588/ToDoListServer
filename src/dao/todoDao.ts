@@ -2,8 +2,9 @@ import { ToDoModel } from '../entity/Todo'
 import * as Types from '../typeings'
 export class todoDao implements Types.todoDao {
     todoModel = ToDoModel;
-    getTodoList(page:number,size:number){
-        return [ ]
+    async getTodoList(page:number,size:number){
+        const data:Array<Types.Todo> = await this.todoModel.find({}).skip((page - 1) * size).limit(size);
+        return data;
     };
     addTodo(todo:Types.Todo){
         return ''

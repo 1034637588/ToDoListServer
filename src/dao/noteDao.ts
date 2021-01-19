@@ -10,7 +10,11 @@ export class noteDao implements Types.noteDao{
        const data:Array<Types.Note> =  await this.noteModel.find({}).skip((page - 1) * size).limit(size);
        return data;
     }
-    addNote(note: Types.Note) {
+    // 新增note
+    async addNote(note: Types.Note) {
+        const noteIns = new this.noteModel(note);
+        const data = await noteIns.save();
+        return data;
     }
     deleteNote(id: string) {
     }

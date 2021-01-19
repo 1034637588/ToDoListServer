@@ -7,7 +7,9 @@ class noteServeice implements Types.noteServeice {
       const data = await this.noteDao.getNoteList(page,size);
       return data;
     }
-    addNote(note: Types.Note) {
+    async addNote(note: Types.Note) {
+       const meg = await this.noteDao.addNote(note);
+       return meg;
     }
     deleteNote(id: string) {
     }
