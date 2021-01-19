@@ -21,7 +21,7 @@ export interface Result<T> {
 
 export interface noteServeice {
     noteDao: noteDao;
-    getNoteList(page: number, size: number): Note[];
+    getNoteList(page: number, size: number): Promise<Note[]>;
     addNote(note: Note): any;
     deleteNote(id: string): any;
     updateNote(id: string, note: Note): any;
@@ -38,7 +38,7 @@ export interface todoServeice {
 
 export interface noteDao {
     noteModel: Model<Note>;
-    getNoteList(page: number, size: number): Promise<any>;
+    getNoteList(page: number, size: number): Promise<Note[]>;
     addNote(note: Note): any;
     deleteNote(id: string): any;
     updateNote(id: string, note: Note): any;

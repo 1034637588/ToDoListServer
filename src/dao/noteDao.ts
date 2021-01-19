@@ -5,11 +5,10 @@ const Schema = mongoose.Schema;
 
 export class noteDao implements Types.noteDao{
     noteModel=NoteModel
+    // 分页查询
     async getNoteList(page: number, size: number) {
-        await this.noteModel.find((err,res)=>{
-            console.log(res,666)
-            return res
-        })
+       const data:Array<Types.Note> =  await this.noteModel.find();
+       return data;
     }
     addNote(note: Types.Note) {
     }

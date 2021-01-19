@@ -3,9 +3,9 @@ import { noteDao } from "../dao/noteDao";
 
 class noteServeice implements Types.noteServeice {
     noteDao = new noteDao();
-    getNoteList(page: number, size: number) {
-        this.noteDao.getNoteList(1,2);
-        return []
+    async getNoteList(page: number, size: number) {
+      const data = await this.noteDao.getNoteList(page,size);
+      return data;
     }
     addNote(note: Types.Note) {
     }
