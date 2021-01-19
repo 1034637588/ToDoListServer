@@ -2,22 +2,40 @@ import { ToDoModel } from '../entity/Todo'
 import * as Types from '../typeings'
 export class todoDao implements Types.todoDao {
     todoModel = ToDoModel;
-    async getTodoList(page:number,size:number){
-        const data:Array<Types.Todo> = await this.todoModel.find({}).skip((page - 1) * size).limit(size);
-        return data;
+
+    async getTodoList(page: number, size: number) {
+        try {
+            const data: Array<Types.Todo> = await this.todoModel.find({}).skip((page - 1) * size).limit(size);
+            return data;
+        } catch (error) {
+            return 0;
+        }
     };
-    async addTodo(todo:Types.Todo){
-        const noteIns = new this.todoModel(todo);
-        const data = await noteIns.save();
-        return data;
+
+    async addTodo(todo: Types.Todo) {
+        try {
+            const noteIns = new this.todoModel(todo);
+            const data: Types.Todo = await noteIns.save();
+        } catch (error) {
+            return 0;
+        }
     };
-    deleteTodo(id:string){
-        return ''
+
+    async deleteTodo(id: string) {
+        try {
+            const data = await this.todoModel.deleteOne({ _id: id });
+            return data;
+        } catch (error) {
+            return 0;
+        }
     };
-    updateTodo(id:string,todo:Types.Todo){
-        return ''
+
+    async updateTodo(id: string, todo: Types.Todo) {
+        try {
+            const data = await this.todoModel.updateOne({ _id: id }, todo);
+            return data;
+        } catch (error) {
+            return 0;
+        }
     };
-    updateIsDone(id:string,isDone:boolean){
-        return ''
-    }
 }

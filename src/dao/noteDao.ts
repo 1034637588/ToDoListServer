@@ -40,7 +40,7 @@ export class noteDao implements Types.noteDao {
     async updateNote(id: string, note: Types.Note) {
         try {
             const data = await this.noteModel.updateOne({ _id: id }, note);
-            return data.ok;
+            return data;
         } catch (error) {
             return 0;
         }

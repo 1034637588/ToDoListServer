@@ -33,7 +33,6 @@ export interface todoServeice {
     addTodo(todo: Todo): any;
     deleteTodo(id: string): any;
     updateTodo(id: string, todo: Todo): any;
-    updateIsDone(id: string, isDone: boolean): any
 }
 
 export interface noteDao {
@@ -50,7 +49,6 @@ export interface todoDao {
     addTodo(todo: Todo): any;
     deleteTodo(id: string): any;
     updateTodo(id: string, todo: Todo): any;
-    updateIsDone(id: string, isDone: boolean): any
 }
 
 

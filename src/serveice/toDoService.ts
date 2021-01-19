@@ -10,13 +10,13 @@ export class toDoService implements Types.todoServeice{
        const meg = await this.todoDao.addTodo(todo);
        return meg;
     };
-    deleteTodo(id:string){
-        return ''
+    async deleteTodo(id:string){
+        const data = await this.todoDao.deleteTodo(id);
+        return data;
     };
-    updateTodo(id:string,todo:Types.Todo){
-        return ''
+    async updateTodo(id:string,todo:Types.Todo){
+        let data = await this.todoDao.updateTodo(id,todo);
+        return data;
     };
-    updateIsDone(id:string,isDone:boolean){
-        return ''
-    }
+
 }
