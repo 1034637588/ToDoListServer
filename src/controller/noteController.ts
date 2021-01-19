@@ -8,30 +8,45 @@ const serveice = new noteServeice();
 noteRouter.get('/note/:page/:size', async (ctx) => {
     const { page, size }= ctx.params;
     const data = await serveice.getNoteList(Number(page), Number(size));
-    const result = new Result<Types.Note[]>(20000, data, 'success');
-    ctx.body = result;
+    if(data) { // 判断是否成功
+        ctx.body = new Result<Types.Note[]|number>(20000, data, 'success');
+    } else {
+        ctx.body =  new Result<null>(20001, null, 'error');
+    }
 });
+
 // 新增note
 noteRouter.post('/note',async (ctx) => {
-    const body:Types.Note = ctx.request.body;
-    const data = await serveice.addNote(body);
-    let result:Types.Result<Types.Note>;
+    const note:Types.Note = ctx.request.body;
+    const data = await serveice.addNote(note);
     if(data) {
-        result = new Result<Types.Note>(20000, data, 'success');
+        ctx.body = new Result<Types.Note>(20000, data, 'success');
     } else {
-        result = new Result<any>(20001, 'insert error', 'success');
+        ctx.body = new Result<null>(20001, null, 'error');
     }
-    ctx.body = result;
 });
 
 // 删除note
-noteRouter.delete('/note/:id', (ctx) => {
-    // serveice.deleteNote();
+noteRouter.delete('/note/:id', async(ctx) => {
+    const { id } = ctx.params;
+    const data = await serveice.deleteNote(id);
+    if(data){
+        ctx.body =new Result<any>(20000, data, 'success');
+    }else{
+        ctx.body =new Result<any>(20001, null, 'error');
+    }
 });
 
 // 修改note
-noteRouter.put('/note/:id', (ctx) => {
-    // serveice.updateNote();
+noteRouter.put('/note/:id', async(ctx) => {
+    const { id } = ctx.params;
+    const note:Types.Note = ctx.request.body;
+    const data = await serveice.updateNote(id,note);
+    if(data > 0) {
+        ctx.body = new Result<Types.Note>(20000, data, 'success');
+    } else {
+        ctx.body = new Result<any>(20001, null, 'error');
+    }
 });
 
 
