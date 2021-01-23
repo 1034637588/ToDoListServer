@@ -23,6 +23,7 @@ export interface noteServeice {
     noteDao: noteDao;
     getNoteListByContent(content:string): Promise<Note[]> | any;
     getNoteList(page: number, size: number): Promise<Note[]> | any;
+    getNoteById(id:string):Promise<Note> | any;
     addNote(note: Note): Promise<Note[]> | any;
     deleteNote(id: string): Promise<Note[]> | any;
     updateNote(id: string, note: Note): Promise<Note[]> | any;
@@ -41,6 +42,7 @@ export interface noteDao {
     noteModel: Model<Note>;
     getNoteListByContent(content:string): Promise<Note[]> | any;
     getNoteList(page: number, size: number): Promise<Note[]> | any;
+    getNoteById(id:string):Promise<Note> | any;
     addNote(note: Note): Promise<Note[]> | any;
     deleteNote(id: string): Promise<Note[]> | any;
     updateNote(id: string, note: Note): Promise<Note[]> | any;

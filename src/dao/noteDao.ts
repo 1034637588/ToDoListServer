@@ -28,6 +28,16 @@ export class noteDao implements Types.noteDao {
         }
     }
 
+    // id查询
+    async getNoteById(id:string){
+        try {
+            const data:Types.Note = await this.noteModel.findById(id);
+            return data;
+        } catch (error) {
+            return 0;
+        }
+    }
+
     // 新增note
     async addNote(note: Types.Note) {
         try {

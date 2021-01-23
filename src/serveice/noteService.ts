@@ -15,6 +15,11 @@ class noteServeice implements Types.noteServeice {
         return data;
     }
 
+    async getNoteById(id:string) {
+        console.log('service');
+        const data = await this.noteDao.getNoteById(id);
+        return data;
+    }
     async addNote(note: Types.Note) {
         const data = await this.noteDao.addNote(note);
         return data;
