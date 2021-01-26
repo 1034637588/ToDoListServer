@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const url = 'mongodb://192.168.249.129/todo-list';
+const url = 'mongodb://192.168.249.130/todo-list';
 async function connect() {
     try {
         await mongoose.connect(url, {
