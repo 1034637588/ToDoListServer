@@ -64,7 +64,7 @@ noteRouter.put('/note/:id', async(ctx) => {
     const { id } = ctx.params;
     const note:Types.Note = ctx.request.body;
     const data = await serveice.updateNote(id,note);
-    if(data > 0) {
+    if(data) {
         ctx.body = new Result<Types.Note>(20000, data, 'success');
     } else {
         ctx.body = new Result<any>(20001, null, 'error');
